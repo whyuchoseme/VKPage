@@ -1,0 +1,48 @@
+// @import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap"); // Если .header-control display: grid, то не нужно
+@use "./fonts";
+@use "./header";
+@use "./main";
+@use "./variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 16px;
+  font-family: "VK-Sans";
+  background-color: variables.$content-bcg;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 111rem;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+//
+// ANIMATION
+//
+
+@keyframes header-logo-animation {
+  0% {
+    transform: translateY(3%);
+  }
+
+  100% {
+    transform: translateY(-3%);
+  }
+}

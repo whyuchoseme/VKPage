@@ -1,0 +1,182 @@
+@use "./variables";
+
+.header {
+  width: 100%;
+  height: 4.9rem;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid variables.$block-border;
+  background-color: variables.$block-color;
+  z-index: 99;
+
+  .header-control {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 17rem 24.5rem 4.8rem 1fr 6.8rem; // = 108rem
+    align-items: center;
+
+    a {
+      width: 16.4rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 0.6rem;
+
+      // .header-logo-svg {
+      // }
+
+      // Если не использовать svg как логотип
+      // display: flex;
+      // align-items: baseline;
+      // color: black;
+      // text-decoration: none;
+
+      // .header-control__logo {
+      //   padding: 0 0.5rem 0.2rem 0.3rem;
+      //   border-radius: 0.5rem;
+      //   font-family: "Bagel Fat One", cursive;
+      //   font-size: 1.5rem;
+      //   letter-spacing: -1px;
+      //   color: white;
+      //   background-color: #0077ff;
+      //   text-transform: uppercase;
+      // }
+
+      // .header-control__description {
+      //   padding-left: 0.8rem;
+      //   font-family: Tahoma;
+      //   font-size: 2rem;
+      //   font-weight: 600;
+      // }
+      //
+    }
+
+    .header-control__input {
+      width: 23rem;
+      height: 3.2rem;
+      // margin-left: 0.6rem; // Если .header-control display: grid, то не нужно
+      padding-left: 3.4rem;
+      border-radius: 0.8rem;
+      font-family: "VK-Sans"; // Нужно оставить
+      background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20opacity%3D%22.92%22%3E%3Cpath%20opacity%3D%22.1%22%20d%3D%22M0%200H16V16H0z%22%2F%3E%3Cpath%20d%3D%22M6.5%201a5.5%205.5%200%200%201%204.383%208.823l3.896%203.9a.75.75%200%200%201-1.061%201.06l-3.895-3.9A5.5%205.5%200%201%201%206.5%201zm0%201.5a4%204%200%201%200%200%208%204%204%200%200%200%200-8z%22%20fill%3D%22%23818c99%22%20fill-rule%3D%22nonzero%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E);
+      background-position: 1rem;
+      background-repeat: no-repeat;
+      background-color: variables.$input-bcg;
+
+      &::placeholder {
+        color: variables.$placeholder-color;
+      }
+
+      &:hover {
+        background-color: variables.$input-hover-bcg;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .header-control__icons {
+      width: 4.8rem;
+      height: 100%;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+
+      &:hover {
+        background-color: variables.$btn-hover-bcg;
+      }
+
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        fill: variables.$svg-color;
+      }
+    }
+
+    .header-control__standard-player {
+      display: none;
+    }
+
+    .header-control__player {
+      width: 37.7rem;
+      height: 100%;
+
+      .header-control-player-vk {
+        width: max-content;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 1.2rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: variables.$btn-hover-bcg;
+        }
+
+        .player-vk__control-buttons {
+          width: 1.5rem;
+          height: 100%;
+          background-color: transparent;
+
+          &:hover svg path {
+            fill: variables.$svg-color;
+          }
+
+          svg {
+            width: 100%;
+            height: 100%;
+
+            path {
+              fill: variables.$player-svg-color;
+            }
+          }
+        }
+
+        .player-vk__play {
+          width: 2.5rem;
+          margin: 0 0.5rem;
+        }
+
+        .player-vk__audio-name {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 2rem;
+          // font-family: "VK-Sans";
+          font-size: 1.4rem;
+          color: variables.$player-audio-color;
+        }
+      }
+    }
+
+    .header-control__profile {
+      width: 6.8rem;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+
+      &:hover {
+        background-color: variables.$btn-hover-bcg;
+      }
+
+      .header-avatar-png {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 100%;
+      }
+
+      svg {
+        width: 1.2rem;
+        height: 0.8rem;
+        margin-left: 0.5rem;
+
+        path {
+          fill: variables.$svg-color;
+        }
+      }
+    }
+  }
+}

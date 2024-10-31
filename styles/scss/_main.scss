@@ -1,0 +1,667 @@
+@use "./variables";
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.general {
+  display: grid;
+  grid-template-columns: 17rem 55rem 1fr;
+  padding-top: 1.4rem;
+  // padding-top: 1.5rem; // Убрал из-за того, что мой header 49px (border 1 px, чтобы контент внутри был 48px) вместо 48px (как у оригинала)
+}
+
+//
+// LEFT
+//
+
+.main-left {
+  width: 17rem;
+  height: 100%;
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+
+    ul {
+      width: 100%;
+      list-style: none;
+
+      li {
+        width: 100%;
+
+        a {
+          width: 16.4rem;
+          height: 3rem;
+          display: flex;
+          align-items: center;
+          padding: 0 0.6rem;
+          // font-family: "VK-Sans";
+          font-size: 1.3rem;
+          color: black;
+          background-color: transparent;
+          text-decoration: none;
+
+          &:hover {
+            border-radius: 0.3rem;
+            background-color: variables.$nav-a-hover;
+          }
+
+          svg {
+            margin-right: 1rem;
+
+            path {
+              fill: variables.$nav-svg-color;
+            }
+          }
+        }
+      }
+
+      .hr-small {
+        width: 12rem;
+        height: 0.1rem;
+        display: flex;
+        margin: 0.9rem 0.8rem 0.9rem 3.6rem;
+        border-bottom: 1px solid variables.$horizontal-color;
+      }
+
+      .hr-big {
+        width: 15.6rem;
+        height: 0.1rem;
+        margin: 1.4rem 0.8rem 1.4rem 0;
+        border-bottom: 1px solid variables.$horizontal-color;
+      }
+    }
+  }
+}
+
+//
+// CENTER
+//
+
+.main-center {
+  width: 55rem;
+  height: 100%;
+
+  .what-is-new {
+    width: 100%;
+    height: 5.4rem;
+    display: grid;
+    grid-template-columns: 4.8rem 1fr;
+    align-items: center;
+    margin-bottom: 1.5rem; // Отступ до другого блока
+    border-radius: 1.2rem;
+    border: 1px solid variables.$block-border;
+    background-color: variables.$block-color;
+
+    .what-is-new__avatar {
+      width: 2.8rem;
+      height: 2.8rem;
+      justify-self: end;
+      border-radius: 100%;
+
+      .main-avatar-png {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+      }
+    }
+
+    .what-is-new__tools {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: center;
+      padding: 0 2rem 0 1.2rem;
+
+      .tools__input {
+        height: 2.2rem;
+        font-family: "VK-Sans"; // Нужно оставить
+        background-color: transparent;
+
+        &::placeholder {
+          font-size: 1.3rem;
+          color: variables.$placeholder-color;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .tools__media-upload {
+        height: 2.2rem;
+        justify-self: end;
+        display: flex;
+        align-items: center;
+
+        .tools-media-upload__buttons {
+          width: 2.2rem;
+          height: 100%;
+          position: relative;
+          margin-left: 1rem;
+          background-color: transparent;
+
+          &:hover::before {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            border-width: 0 5px 5px 5px;
+            border-style: solid;
+            border-color: transparent transparent variables.$tooltip-bcg
+              transparent;
+            transform: translate(-50%, 120%);
+          }
+
+          &:hover::after {
+            position: absolute;
+            bottom: 0;
+            left: -50%;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 1.25rem;
+            background-color: variables.$tooltip-bcg;
+            color: white;
+            transform: translate(10%, 125%);
+          }
+
+          &:hover svg path {
+            fill: variables.$svg-color;
+          }
+
+          svg {
+            width: 2rem;
+            height: 2rem;
+
+            path {
+              fill: variables.$new-svg-color;
+            }
+          }
+        }
+
+        .tools-media-upload__buttons:first-child {
+          margin-left: 0;
+        }
+
+        .tools-media-upload__photo {
+          &:hover::after {
+            content: "Фотография";
+          }
+        }
+
+        .tools-media-upload__video {
+          &:hover::after {
+            content: "Видеозапись";
+          }
+        }
+
+        .tools-media-upload__audio {
+          &:hover::after {
+            content: "Аудиозапись";
+          }
+        }
+
+        .tools-media-upload__article {
+          &:hover::after {
+            content: "Статья";
+          }
+        }
+
+        .tools-media-upload__clip {
+          &:hover::after {
+            content: "Клип";
+          }
+        }
+      }
+    }
+  }
+
+  .history {
+    width: 100%;
+    height: 23.9rem;
+    margin-bottom: 1.5rem; // Отступ до другого блока
+    padding: 0.8rem 2rem;
+    border-radius: 1.2rem;
+    border: 1px solid variables.$block-border;
+    background-color: variables.$block-color;
+    overflow: hidden;
+
+    &:hover .history__upper-panel .history-upper-panel__settings {
+      display: block;
+    }
+
+    .history__upper-panel {
+      width: 100%;
+      height: 4.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 1.2rem;
+
+      p {
+        // font-family: "VK-Sans";
+        font-size: 1.7rem;
+      }
+
+      .history-upper-panel__settings {
+        display: none;
+        font-family: "VK-Sans"; // Нужно оставить
+        font-size: 1.3rem;
+        color: variables.$history-settingButton-color;
+        background-color: transparent;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .history__slider {
+      width: 100%;
+      height: calc(100% - 6rem);
+      position: relative; // Для стрелок в слайдере
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-column-gap: 0.6rem;
+      align-items: center;
+      transition: all 0.15s linear;
+
+      .history-slider__buttons {
+        width: 2.8rem;
+        height: 2.8rem;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        z-index: 3;
+
+        &:hover {
+          background-color: white;
+        }
+
+        svg {
+          width: 1.2rem;
+          height: 1.6rem;
+
+          path {
+            fill: variables.$history-arrow;
+          }
+        }
+      }
+
+      .history-slider__arrow-right {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(32%, -50%);
+      }
+
+      .history-slider__arrow-left {
+        position: absolute;
+        top: 50%;
+        left: 32%;
+        transform: translate(50%, -50%);
+      }
+
+      .history-slider__item {
+        width: 9.4rem;
+        height: 16.7rem;
+        position: relative;
+        border-radius: 0.8rem;
+        overflow: hidden;
+        user-select: none;
+
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          border-radius: inherit;
+          background-color: rgba(0, 0, 0, 0.2);
+          z-index: 2;
+        }
+
+        .history-slider-item__image {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          transform: scale(1.25);
+        }
+
+        .history-slider-item__info {
+          width: 100%;
+          height: auto;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding-bottom: 1.2rem;
+          box-shadow: 0 -4.5rem 1rem 0 rgba(0, 0, 0, 0.8) inset;
+          transform: translateX(-50%);
+          z-index: 3;
+
+          .slider-item-info__logo {
+            width: 4.4rem;
+            height: 4.4rem;
+            margin-bottom: 0.2rem;
+            padding: 0.2rem;
+            border-radius: 100%;
+            border: 2px solid variables.$history-slider-border-logo-color;
+            background-color: transparent;
+
+            .slider-logo__user-image {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: inherit;
+              background-color: white;
+
+              svg {
+                width: 2rem;
+                height: 2rem;
+
+                path {
+                  stroke: variables.$history-slider-img-color;
+                }
+              }
+            }
+
+            .slider-logo__image {
+              width: 100%;
+              height: 100%;
+              border-radius: inherit;
+            }
+          }
+
+          .slider-item-info__logo.unseen {
+            border-color: variables.$history-slider-img-color;
+          }
+
+          .slider-item-info__user-logo {
+            border-color: transparent;
+          }
+
+          p {
+            // font-family: "VK-Sans";
+            font-size: 1.2rem;
+            color: white;
+          }
+
+          p.unseen {
+            color: variables.$history-slider-img-color;
+          }
+        }
+      }
+    }
+
+    /* Возможное поведение стрелок */
+    .move-image-right {
+      transform: translate(-36.7%);
+    }
+
+    .charge-image-right {
+      transform: translate(-1.5%);
+    }
+
+    .charge-image-left {
+      transform: translate(-35%);
+    }
+  }
+
+  .user-news {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .user-news__item {
+      width: 100%;
+      min-height: 10rem;
+      margin-bottom: 1.5rem; // Отступ до другого блока
+      padding: 1.6rem 2rem 1.2rem;
+      border-radius: 1.2rem;
+      border: 1px solid variables.$block-border;
+      background-color: variables.$block-color;
+
+      .user-news-item__logo {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        cursor: pointer;
+
+        .news-item-logo__image {
+          width: 4.8rem;
+          height: 4.8rem;
+          padding: 0.2rem;
+          border-radius: 100%;
+          border: 2px solid transparent;
+          background-color: transparent;
+          user-select: none;
+
+          img {
+            width: 4rem;
+            height: 4rem;
+            border-radius: inherit;
+          }
+        }
+
+        .news-item-logo__title {
+          width: 100%;
+          height: 3.4rem;
+          display: flex;
+          flex-direction: column;
+          margin-left: 0.5rem;
+          // font-family: "VK-Sans";
+          font-weight: 700;
+          font-size: 1.3rem;
+          color: #2a5885;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .user-news__description {
+        width: 100%;
+        margin-bottom: 1.2rem;
+        // font-family: "VK-Sans";
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+
+      .user-news__media {
+        width: 100%;
+        min-height: 2.5rem;
+        margin-bottom: 1.2rem;
+        border-radius: 0.8rem;
+        cursor: pointer;
+      }
+
+      .user-news__reaction {
+        width: 100%;
+        height: 4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .user-news-reaction__buttons {
+          min-width: 4.8rem;
+          height: 3.2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 0.8rem;
+          padding: 0.4rem 1.2rem;
+          border-radius: 2rem;
+          background-color: #ebedf0;
+          color: variables.$svg-color;
+
+          &:hover {
+            background-color: #e6e8eb;
+          }
+
+          &.contains-user-like {
+            background-color: #ffeded;
+
+            svg {
+              circle {
+                fill: red;
+              }
+
+              path {
+                fill: white;
+                transform: scale(0.75);
+                transform-origin: 50% 60%;
+              }
+            }
+          }
+
+          &:hover.contains-user-like {
+            background-color: #f6e4e4;
+          }
+
+          svg {
+            width: 2.4rem;
+            height: 2.4rem;
+
+            path {
+              fill: variables.$svg-color;
+            }
+          }
+        }
+
+        .user-news-reaction__buttons:first-child {
+          margin-left: 0;
+        }
+
+        .user-news__like-count {
+          margin-left: 0.4rem;
+          // font-family: "VK-Sans";
+          font-size: 1.4rem;
+        }
+
+        .user-news__like-count-user {
+          margin-left: 0.4rem;
+          // font-family: "VK-Sans";
+          font-size: 1.4rem;
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+//
+// RIGHT
+//
+
+.main-right {
+  width: 34.5rem;
+  height: 100%;
+  justify-self: end;
+
+  .navigation {
+    width: 34.5rem;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.2rem;
+    padding: 0.8rem;
+    border: 1px solid variables.$block-border;
+    background-color: variables.$block-color;
+
+    ul {
+      width: 100%;
+      font-size: 1.3rem;
+      list-style: none;
+
+      li {
+        width: 100%;
+        margin-bottom: 0.2rem;
+
+        .navigation__items {
+          width: 100%;
+          height: 3.6rem;
+          display: flex;
+          align-items: center;
+          padding: 0.4rem 1.2rem;
+          border-radius: 0.8rem;
+
+          &:hover {
+            background-color: variables.$btn-hover-bcg;
+          }
+        }
+
+        .navigation__news {
+          display: grid;
+          grid-template-columns: 1fr auto auto;
+          background-color: variables.$btn-hover-bcg;
+
+          a {
+            color: black;
+            text-decoration: none;
+          }
+
+          button {
+            width: 2rem;
+            height: 2rem;
+            background-color: transparent;
+            margin-right: 1.4rem;
+
+            &:hover svg path {
+              fill: variables.$svg-color;
+            }
+
+            svg {
+              width: 100%;
+              height: 100%;
+
+              path {
+                fill: variables.$new-svg-color;
+              }
+            }
+          }
+
+          button:last-child {
+            margin-right: 0;
+          }
+        }
+
+        a {
+          color: black;
+          text-decoration: none;
+        }
+
+        .navigation__friends,
+        .navigation__communities {
+          padding-left: 2rem;
+          color: #66707d;
+        }
+      }
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+
+      .hr-big {
+        width: 30.5rem;
+        height: 0.1rem;
+        margin: 0.4rem 1.2rem;
+        border-bottom: 1px solid variables.$horizontal-color;
+      }
+    }
+  }
+}
