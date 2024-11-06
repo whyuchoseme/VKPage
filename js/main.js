@@ -9,8 +9,8 @@ const headerAvatar = document.querySelector(".header-avatar-png"); // Чтобы
 const whatIsNewAvatar = document.querySelector(".main-avatar-png"); // Чтобы в дальнейшем подгрузить ее с сервера
 const history = document.querySelector(".history");
 const historySlider = document.querySelector(".history__slider");
-const SliderArrowRight = document.querySelector(".history-slider__arrow-right");
-const SliderArrowLeft = document.querySelector(".history-slider__arrow-left");
+const sliderArrowRight = document.querySelector(".history-slider__arrow-right");
+const sliderArrowLeft = document.querySelector(".history-slider__arrow-left");
 const historySliderItemUser = document.querySelector(
   ".history-slider-item__user"
 ); // Чтобы в дальнейшем подгрузить ее с сервера
@@ -19,14 +19,14 @@ const userNews = document.querySelector(".user-news");
 /* Запросы и создание контента */
 
 // Должен подгружать картинку профиля пользователя в header-control__profile с сервера
-headerAvatar.src = "../images/avatar/avatar.png";
+headerAvatar.src = "./images/avatar/avatar.png";
 // Должен подгружать картинку профиля пользователя в what-is-new__avatar с сервера
-whatIsNewAvatar.src = "../images/avatar/avatar.png";
+whatIsNewAvatar.src = "./images/avatar/avatar.png";
 
 function createHistorySliderItem() {
   // Должен подгружать картинку профиля пользователя в history__slider с сервера
   historySliderItemUser.src =
-    "../images/main-center/history-slider/history-slider-profile.jpg";
+    "./images/main-center/history-slider/history-slider-profile.jpg";
 
   // Создает слайдер в history__slider
   const maxCountImages = 6;
@@ -40,7 +40,7 @@ function createHistorySliderItem() {
 
     const historySliderItemImage = document.createElement("img");
     historySliderItemImage.classList.add("history-slider-item__image");
-    historySliderItemImage.src = `../images/main-center/history-slider/history-slider-image-${
+    historySliderItemImage.src = `./images/main-center/history-slider/history-slider-image-${
       i + 1
     }.jpg`;
     historySliderItemImage.alt = `slider-image-${i + 1}.jpg`;
@@ -78,7 +78,7 @@ function createHistorySliderItem() {
 
     const infoLogoImage = document.createElement("img");
     infoLogoImage.classList.add("slider-logo__image");
-    infoLogoImage.src = `../images/main-center/history-slider/history-slider-image-${
+    infoLogoImage.src = `./images/main-center/history-slider/history-slider-image-${
       maxCountImages - i
     }.jpg`;
     infoLogoImage.alt = `slider-logo-image-${maxCountImages - i}`;
@@ -116,7 +116,7 @@ async function getUserNews() {
 
     const logoImagePicture = document.createElement("img");
     logoImagePicture.classList.add("user-news-logo-image");
-    logoImagePicture.src = `../images/main-center/user-news/user-news-item-image-${
+    logoImagePicture.src = `./images/main-center/user-news/user-news-item-image-${
       content.length - i
     }.jpeg`;
     logoImagePicture.alt = `news-item-image-${content.length - i}`;
@@ -142,7 +142,7 @@ async function getUserNews() {
 
     const userNewsImage = document.createElement("img");
     userNewsImage.classList.add("user-news__media");
-    userNewsImage.src = `../images/main-center/user-news/user-news-item-image-${
+    userNewsImage.src = `./images/main-center/user-news/user-news-item-image-${
       i + 1
     }.jpeg`;
     userNewsImage.alt = `news-item-image-${i + 1}`;
@@ -264,15 +264,15 @@ getUserNews();
 headerLogo.addEventListener("click", () => {
   // Создает эффект подергивания vk-icon при клике и обновляет страницу
   headerLogo.style.animation = "header-logo-animation 0.1s";
-  setTimeout(() => (window.location.href = "/"), 200);
+  setTimeout(() => (window.location.href = "/VKPage/"), 200);
 });
 
 history.addEventListener("mouseover", () => {
   // Задает поведение для стрелок скролла историй в history-image (history-image__arrow-right, history-image__arrow-left)
   if (!historySlider.classList.contains("move-image-right")) {
-    SliderArrowRight.style.display = "flex";
+    sliderArrowRight.style.display = "flex";
   } else {
-    SliderArrowLeft.style.display = "flex";
+    sliderArrowLeft.style.display = "flex";
   }
 
   arrowRightInstructions();
@@ -281,22 +281,22 @@ history.addEventListener("mouseover", () => {
 
 history.addEventListener("mouseout", () => {
   // Задает поведение для стрелок скролла историй в history-image (history-image__arrow-right, history-image__arrow-left)
-  SliderArrowRight.style.display = "none";
-  SliderArrowLeft.style.display = "none";
+  sliderArrowRight.style.display = "none";
+  sliderArrowLeft.style.display = "none";
 });
 
 function arrowRightInstructions() {
   // Описывает поведение правой стрелки в history__slider
-  SliderArrowRight.addEventListener("mouseover", () => {
+  sliderArrowRight.addEventListener("mouseover", () => {
     historySlider.classList.add("charge-image-right");
   });
 
-  SliderArrowRight.addEventListener("mouseout", () => {
+  sliderArrowRight.addEventListener("mouseout", () => {
     historySlider.classList.remove("charge-image-right");
   });
 
-  SliderArrowRight.addEventListener("click", () => {
-    SliderArrowRight.style.display = "none";
+  sliderArrowRight.addEventListener("click", () => {
+    sliderArrowRight.style.display = "none";
     historySlider.classList.add("move-image-right");
     historySlider.classList.remove("charge-image-right");
   });
@@ -304,16 +304,16 @@ function arrowRightInstructions() {
 
 function arrowLeftInstructions() {
   // Описывает поведение левой стрелки в history__slider
-  SliderArrowLeft.addEventListener("mouseover", () => {
+  sliderArrowLeft.addEventListener("mouseover", () => {
     historySlider.classList.add("charge-image-left");
   });
 
-  SliderArrowLeft.addEventListener("mouseout", () => {
+  sliderArrowLeft.addEventListener("mouseout", () => {
     historySlider.classList.remove("charge-image-left");
   });
 
-  SliderArrowLeft.addEventListener("click", () => {
-    SliderArrowLeft.style.display = "none";
+  sliderArrowLeft.addEventListener("click", () => {
+    sliderArrowLeft.style.display = "none";
     historySlider.classList.remove("move-image-right");
     historySlider.classList.remove("charge-image-left");
   });

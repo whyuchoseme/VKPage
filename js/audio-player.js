@@ -12,13 +12,13 @@ const playlist = [
   "50 Cent - You don't know.mp3",
 ];
 
-let IndexOfTrack; // Переменная с индексом трека
+let indexOfTrack; // Переменная с индексом трека
 let audioCurrentTimeTrack; // В дальнейшем будет храниться текущее время трека
 let audioFullTimeTrack; // В дальнейшем будет храниться общее время трека
 
 // Событие после полной загрузкой страницы
 window.onload = function () {
-  IndexOfTrack = 0;
+  indexOfTrack = 0;
   audio.volume = 0.1;
 
   getCorrectLengthTrackName();
@@ -39,12 +39,12 @@ btnPrev.addEventListener("click", function () {
         />
       </svg>`;
 
-  if (IndexOfTrack > 0) {
-    IndexOfTrack--;
-    switchTrack(IndexOfTrack);
+  if (indexOfTrack > 0) {
+    indexOfTrack--;
+    switchTrack(indexOfTrack);
   } else {
-    IndexOfTrack = playlist.length - 1;
-    switchTrack(IndexOfTrack);
+    indexOfTrack = playlist.length - 1;
+    switchTrack(indexOfTrack);
   }
 });
 
@@ -58,16 +58,16 @@ btnPlay.addEventListener("click", function () {
 
       if (
         audioCurrentTimeTrack == audioFullTimeTrack &&
-        IndexOfTrack < playlist.length - 1
+        indexOfTrack < playlist.length - 1
       ) {
-        IndexOfTrack++;
-        switchTrack(IndexOfTrack);
+        indexOfTrack++;
+        switchTrack(indexOfTrack);
       } else if (
         audioCurrentTimeTrack == audioFullTimeTrack &&
-        IndexOfTrack >= playlist.length - 1
+        indexOfTrack >= playlist.length - 1
       ) {
-        IndexOfTrack = 0;
-        switchTrack(IndexOfTrack);
+        indexOfTrack = 0;
+        switchTrack(indexOfTrack);
       }
     });
 
@@ -118,12 +118,12 @@ btnNext.addEventListener("click", function () {
         />
       </svg>`;
 
-  if (IndexOfTrack < playlist.length - 1) {
-    IndexOfTrack++;
-    switchTrack(IndexOfTrack);
+  if (indexOfTrack < playlist.length - 1) {
+    indexOfTrack++;
+    switchTrack(indexOfTrack);
   } else {
-    IndexOfTrack = 0;
-    switchTrack(IndexOfTrack);
+    indexOfTrack = 0;
+    switchTrack(indexOfTrack);
   }
 });
 
